@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+<style>
+  button{
+    width:100px;
+    height: 100px;
+    font-size: 50px;
+   /* color:white;
+    background-color:white;*/
+  }
+</style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td>
+      <button id="0" onclick="hamleYap(this.id)">&nbsp;</button>
+      <button id="1" onclick="hamleYap(this.id)">&nbsp</button>
+      <button id="2" onclick="hamleYap(this.id)">&nbsp</button>
+    </td>
+    </tr>
+    <tr>
+    <td>
+      <button id="3" onclick="hamleYap(this.id)">&nbsp</button>
+      <button id="4" onclick="hamleYap(this.id)">&nbsp</button>
+      <button id="5" onclick="hamleYap(this.id)">&nbsp</button>
+    </td>
+    </tr>
+    <tr>
+    <td>
+      <button id="6" onclick="hamleYap(this.id)">&nbsp</button>
+      <button id="7" onclick="hamleYap(this.id)">&nbsp</button>
+      <button id="8" onclick="hamleYap(this.id)">&nbsp</button>
+    </td>
+    </tr>
+  
+  </table>
+
+  <script>
+    const oyunDurumu = ["", "","","","","","","",""];
+    let flag = 0;
+    const kazananX = "XXX";
+    const kazananO = "OOO";
+    function hamleYap(btnId){
+      const tiklananButton = document.getElementById(btnId);
+      if(flag == 0){
+        oyunDurumu[btnId] = "X";
+      tiklananButton.innerHTML = "X";
+      tiklananButton.disabled = true;
+        flag = 1;
+      } else {
+
+        // bilgisayar Math.random() fonk kullanarak bir sayı bulacak bulunan sayıdaki button disabled ise
+        // başka bir sayı üretip tekrar  button a bakılacak ta ki disabled olmayan button bulanana kadar
+        oyunDurumu[btnId] = "O";
+      tiklananButton.innerHTML = "O";
+      tiklananButton.disabled = true;
+        flag = 0;
+      }
+      // "X","X","X"
+      console.log((oyunDurumu.slice(0,3)));
+      console.log((oyunDurumu.slice(0,3).join("")));
+
+      if(oyunDurumu.slice(0,3).join("") === kazananX  || oyunDurumu.slice(3,6).join("") === kazananX || oyunDurumu.slice(6).join("") === kazananX ){
+        alert("Oyunu X kazandı!");
+      }
+
+      if(oyunDurumu[0] + oyunDurumu[3] + oyunDurumu[6] === kazananX){
+        alert("Oyunu X kazandı!");
+      }
+
+    }
+  </script>
+</body>
+</html>
